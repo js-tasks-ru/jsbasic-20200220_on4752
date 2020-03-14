@@ -2,7 +2,7 @@
  * Метод устанавливает необходимые по условию аттрибуты таблице
  * @param {Element} table
  */
-let table1 = '';
+
 function highlight(table) {
     for (row of table.lastElementChild.rows) {
         if ( !row.lastElementChild.hasAttribute('data-available') ) {
