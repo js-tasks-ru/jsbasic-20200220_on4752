@@ -21,13 +21,13 @@ function SortableTable(items) {
 
   this.el.appendChild( createRow(items, 'thead') );
   this.el.appendChild( createRow(items, 'tbody') );
+  
   /**
    * Метод выполняет сортировку таблицы
    * @param {number} column - номер колонки, по которой
    * нужно выполнить сортировку (отсчет начинается от 0)
    * @param {boolean} desc - признак того, что сортировка должна идти в обратном порядке
    */
-
   this.sort = (column, desc = false) => {
     let arr = Array.from( this.el.querySelectorAll('tbody tr') );
 
@@ -52,7 +52,7 @@ function SortableTable(items) {
       arr.sort( (a, b) => a.cells[column].textContent - b.cells[column].textContent );
     }
 
-    for (row of arr) {
+    for (const row of arr) {
       this.el.lastElementChild.appendChild(row);
     }
   };
@@ -60,10 +60,10 @@ function SortableTable(items) {
   function createRow(arr, node) {
     let element = document.createElement(node);
 
-    for (let obj of arr) {
+    for (const obj of arr) {
       let tr = document.createElement('tr');
   
-      for (key in obj) {
+      for (const key in obj) {
         let td = document.createElement('td');
 
         td.textContent = node === 'thead' ? key[0].toUpperCase() + key.slice(1) : obj[key];
