@@ -26,6 +26,22 @@ class Menu {
   `;
 
   constructor(element) {
+    this.el = element;
+    this.el.innerHTML = this.template;
+
+    this.el.querySelectorAll('.list-group-item').forEach(node => {
+      node.addEventListener('pointerenter', (e) => {
+        e.target.querySelector('.dropdown-menu').classList.add('show');
+
+        document.querySelector('.backdrop').classList.add('show');
+      });
+
+      node.addEventListener('pointerleave', (e) => {
+        e.target.querySelector('.dropdown-menu').classList.remove('show');
+
+        document.querySelector('.backdrop').classList.remove('show');
+      });
+    });
   }
 }
 
